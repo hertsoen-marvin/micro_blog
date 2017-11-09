@@ -1,5 +1,6 @@
 <?php
 	include ("includes/connexion.inc.php");
+	include ("includes/verif_connexion_user.inc.php");
 
 if ($connecte_util){
 	try{
@@ -8,7 +9,7 @@ if ($connecte_util){
 		$a = $_GET['a'];
 
 		if ($a == 'sup'){
-			
+
 			$sql='DELETE FROM messages WHERE id = :id';
 
 			$prep = $pdo->prepare($sql);

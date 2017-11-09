@@ -23,7 +23,7 @@
 		$sql = 'SELECT * from utilisateurs WHERE email = :mail AND password = :pass';
 		$prep = $pdo->prepare($sql);
 		$prep->bindValue(':mail', $email);
-		$prep->bindValue(':pass', $password);
+		$prep->bindValue(':pass', md5($password));
 		$prep->execute();
 
 		if ($prep->fetch()){						// Si on trouve une correspondance entrée <--> bdd

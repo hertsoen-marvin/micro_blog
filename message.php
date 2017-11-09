@@ -1,5 +1,7 @@
 <?php
 	include ("includes/connexion.inc.php");
+	include ("includes/verif_connexion_user.inc.php");
+
 	if ($connecte_util){
 		try{
 			echo var_dump($_POST);
