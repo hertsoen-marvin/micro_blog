@@ -85,7 +85,7 @@
               <div class="col-md-12">
 
 								<?php while ($data = $stmt->fetch()){
-									echo "<blockquote><p>" .$data['contenu'] . "</p><footer>" .date("F j, Y, g:i a",$data['date']) ."</footer></blockquote>";
+									echo "<blockquote><p>" . htmlspecialchars($data['contenu']) . "</p><footer>" .date("F j, Y, g:i a",$data['date']) ."</footer></blockquote>";
 
 									if ($connecte_util){
 										echo '<a href="article.php?a=sup&id=' . $data['id'] . '", class="btn btn-danger">' . 'Supprimer</a>';
