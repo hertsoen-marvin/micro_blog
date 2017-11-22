@@ -1,8 +1,8 @@
 <?php
+	/**************** Ajout des includes php *******************/
 	include ("includes/connexion.inc.php");
 	include ("includes/verif_connexion_user.inc.php");
 	include ("includes/haut.inc.php");
-
 ?>
 
 <!-- Header -->
@@ -27,6 +27,7 @@
 								if (isset($_GET['a']) && !empty($_GET['a'])) {
 										//	echo var_dump($_GET);
 
+									/******************************** On active la modification d'un commentaire via le Text Area si a = mod *************************************/
 									if($_GET['a'] == 'mod' ){
 										//echo 'modification...';
 										echo '<form method="GET" action="article.php">';
@@ -47,18 +48,18 @@
 									<?php
 									}
 								}
+								/******************************** Sinon on affiche la page normalement *************************************/
 								else{
 									echo '<form method="POST" action="message.php">';
 									?>
 												<div class="col-sm-10">
 													<div class="form-group">
 														<?php
-														if ($connecte_util){
+														if ($connecte_util){	//Si l'utilisateur est connexté, on lui permet d'écrire un message
 															echo '<textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>';
 														}
 														else{} // sinon on affiche pas l'input de texte
 														?>
-														<!-- ajouter le label -->
 													</div>
 												</div>
 												<div class="col-sm-2">

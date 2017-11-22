@@ -1,11 +1,18 @@
 <?php
 	include ("includes/connexion.inc.php");
+	include ("includes/verif_connexion_user.inc.php");
 ?>
 
 <?php
 
-/******************************** Traitement *************************************/
 
+	// Si l'utilisateur est déjà connecté, on le renvoie à la page d'accueil
+  if($connecte_util){
+		header('location:index.php');
+	}
+
+	/******************************** Traitement *************************************/
+	//Sinon on vérifie
 	if(isset($_POST['input_email']) && isset($_POST['input_password'])){
 
 		//1 check email / mdp
@@ -26,7 +33,7 @@
 		$prep->bindValue(':pass', md5($password));
 		$prep->execute();
 
-		if ($prep->fetch()){						// Si on trouve une correspondance entrée <--> bdd
+		if ($prep->fetch()){										// Si on trouve une correspondance entrée <--> bdd
 
 			if (!isset($_COOKIE['id_session']))		// Si le cookie n'est pas encore créé
 			{
@@ -35,14 +42,14 @@
 					/* creation id session */
 				$sid = md5($email . time()); // --> On crée une longue chaine de caractère à partir de l'email par ex. (avec time() en plus pour que la sortie ne soit jamais la même)
 
-					/* MAJ BDD */
+					/* MAJ du sid dans la BDD */
 				$sql = 'UPDATE utilisateurs SET sid = :sid WHERE email = :email';
 				$prep = $pdo->prepare($sql);
 				$prep->bindValue(':sid'		,	 $sid);
 				$prep->bindValue(':email'	, 	 $email);
 				$prep->execute();
 
-					/* Creation cookie */
+					/* Creation cookie sur le client web */
 				setcookie('id_session',$sid,time()+60*15);
 			}
 
@@ -54,10 +61,16 @@
 			echo 'Mot de passe / Adresse mail invalide';
 		}
 	}
+
+
+
+
 	else{
 ?>
 
-/******************************** HTML *************************************/
+
+<!-- ******************************** HTML ************************************* -->
+
 
 <?php
 	include ("includes/haut.inc.php");
@@ -101,6 +114,6 @@
 </section>
 
 <?php
-} // fin de la condition (si on est dansdu simple affichage de la page, pas du traitement)
+} // fin de la condition (si on est dans du simple affichage de la page, pas du traitement)
 include ("includes/bas.inc.php");
 ?>

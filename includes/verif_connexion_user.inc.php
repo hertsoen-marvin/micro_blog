@@ -21,7 +21,7 @@ if (isset($_COOKIE['id_session']) && $_COOKIE['id_session']){    //false : chain
 
   if (isset($resultat['sid']) && $resultat['sid'] && $_COOKIE['id_session'] == $resultat['sid']){      // Si la sid est récupéré depuis la bdd, n'est pas vide &  est égal au cookie
     $connecte_util = true;
-    if (isset($resultat['email']) && $resultat['email']){             // Si l'email est récupéré depuis la bdd & qu'il n'est pas vide
+    if (isset($resultat['email']) && $resultat['email']){                      // Si l'email est récupéré depuis la bdd & qu'il n'est pas vide
       $email_util = $resultat['email'];
     }
   }

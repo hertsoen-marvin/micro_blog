@@ -8,6 +8,8 @@ if ($connecte_util){
 
 		$a = $_GET['a'];
 
+
+/***************************** 			Suppression d'un article		*****************************/
 		if ($a == 'sup'){
 
 			$sql='DELETE FROM messages WHERE id = :id';
@@ -20,6 +22,8 @@ if ($connecte_util){
 			header("Location:index.php");
 			exit();
 		}
+/***************************** 			Modification d'un article		*****************************/
+
 		else if($a == 'mod'){
 			$sql='UPDATE messages SET contenu = :contenu, date = UNIX_TIMESTAMP() WHERE id = :id';
 			$prep = $pdo->prepare($sql);
@@ -34,20 +38,9 @@ if ($connecte_util){
 		}
 		else{
 		}
-		//$sql='DELETE FROM messages WHERE ';
-		/*
-		$prep = $pdo->prepare($sql);
-		$prep->bindValue(':contenu',$_POST['message']);
-		$prep->debugDumpParams();
-
-
-		$prep->execute();
-
-		echo 'envoi réussi ! ';
-		//header("Location:index.php");
-		//exit();
-		*/
 	}
+/***************************** 			Affichage des erreurs		*****************************/
+
 	catch (PDOException $e){
 		echo 'Connexion échouée : ' . $e->getMessage();
 	}
