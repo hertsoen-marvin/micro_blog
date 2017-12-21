@@ -15,6 +15,7 @@
 
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -54,7 +55,9 @@
                           if ($connecte_util && $email_util){
                             echo '<li class="page-scroll"><a>'.$email_util . '</a></li><li class="page-scroll"><a href="deconnexion.php">Deconnexion</a></li> ';}
                           else{
-                            echo '  <li class="page-scroll"><a href="connexion.php">Connexion</a></li>';}
+                            echo '  <li class="page-scroll"><a href="inscription.php">inscription</a></li>';
+                            echo '  <li class="page-scroll"><a href="connexion.php">Connexion</a></li>';
+                          }
                         ?>
                     </li>
                 </ul>

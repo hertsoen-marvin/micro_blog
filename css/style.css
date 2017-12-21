@@ -1,0 +1,21 @@
+.cus_blockquote{
+
+  font-family: 'tahoma';
+  border: px solid black;
+  border-radius:6px;
+  background-color: #F0F0F0;
+}
+.bouton{
+    display: inblock;
+    margin-right : 3px;
+    /* padding : à l'interieur du bloc, margin : a l'exterieur du bloc */
+}
+#message{
+  resize: vertical;
+}
+header{
+  /*background-color: #FB8721;*/
+
+
+
+}

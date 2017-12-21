@@ -1,0 +1,80 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-text">
+                    <span class="name">Le fil</span>
+                    <hr class="star-light">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section>
+    <div class="container">
+        <div class="row">
+
+            {if isset($a)}
+              {if $a == 'mod' and $id }
+                <form method="GET" action="article.php">
+
+                    <div class="col-sm-10">
+
+                      <div class="form-group">
+                        <textarea id="message" name="message" class="form-control" placeholder="Message"> {$contenu} </textarea>
+                      </div>
+
+                        <input type="hidden"  name="a"  value="mod">
+                        <input type='hidden'  name='id'  value="{$id}">
+
+                    </div>
+                    <div class="col-sm-2">
+                      <button type="submit" class="btn btn-success btn-lg">Envoyer</button><br/><br/>
+                      <a href='index.php'><button class="btn btn-success btn-lg">Annuler</button></a>
+                    </div>
+                  </form>
+
+
+              {/if}
+            {else}
+              <form method="POST" action="message.php">
+
+                    <div class="col-sm-10">
+                      <div class="form-group">
+                        {if $connecte_util}
+                          <textarea id="message" name="message" class="form-control" placeholder="Rédigez votre message"></textarea>
+                        {/if}
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                        {if $connecte_util}
+                        <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
+                        {/if}
+                    </div>
+                  </form>
+            {/if}
+      </div>
+      <br /> <br />
+
+
+      <div class="row">
+          <div class="col-md-12">
+
+            {while ($data = $stmt->fetch())}
+              <blockquote class='blockquote cus_blockquote'><p> {$data['contenu']|escape:"html"} </p><footer> {$data['date']|date_format:"%A, %B %e, %Y"} </footer></blockquote>
+
+              {if $connecte_util}
+                <a href='article.php?a=sup&id="{$data["id"]}"' class='bouton btn btn-danger'> Supprimer</a>
+                <a href='index.php?a=mod&id={$data["id"]}&contenu={$data["contenu"]|escape:"html"}' class="bouton btn btn-warning"> Modifier</a>
+              {/if}
+              <br /> <br />
+            {/while}
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
