@@ -100,6 +100,18 @@ function model_get_all_messages(){
   return $messages;
 }
 
+/* Chercher un message à partir de la pagination */
+function model_get_paging_messages($index){
+
+  include ("includes/connexion.inc.php");
+
+    $debut = $index;
+    $fin = $debut + 5;
+
+    $sql="select * from messages ORDER BY date DESC limit " .$debut.", ". $fin; //
+    return  $pdo->query($sql);
+}
+
 /* Chercher un message particulier */
 function model_search_messages($recherche){
 

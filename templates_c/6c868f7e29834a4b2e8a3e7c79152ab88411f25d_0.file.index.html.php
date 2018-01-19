@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-01-19 19:51:01
+/* Smarty version 3.1.31, created on 2018-01-19 22:49:40
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5a624c2531c435_74562655',
+  'unifunc' => 'content_5a6276043d6a18_85731519',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1516391120,
+      1 => 1516402179,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a624c2531c435_74562655 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a6276043d6a18_85731519 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
@@ -66,7 +66,13 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
 
               <?php }?>
             <?php } else { ?>
+
               <form method="GET" action="messages.php">
+                <?php if ($_smarty_tpl->tpl_vars['connecte_util']->value) {?>
+                  <input type="hidden"  name="a"  value="crea">
+                <?php }?>
+
+                <div class="row">
 
                     <div class="col-sm-10">
                       <div class="form-group">
@@ -75,13 +81,15 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
                         <?php }?>
                       </div>
                     </div>
+
                     <div class="col-sm-2">
                         <?php if ($_smarty_tpl->tpl_vars['connecte_util']->value) {?>
-                        <input type="hidden"  name="a"  value="crea">
-                        <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
+                        <button type="submit" class="btn btn-success " style='width:100%; '>Envoyer</button>
                         <?php }?>
                     </div>
-                  </form>
+                </div>
+              </form>
+
             <?php }?>
       </div>
       <br /> <br />
@@ -90,7 +98,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
         <div class="col-sm-4 col-sm-offset-8">
           <form method="GET" action="index.php">
             <div id='search_bar' class="input-group stylish-input-group">
-                <input type="text" name='search_bar' class="form-control"  placeholder="Chercher un message" >
+                <input type="text" name='search_bar' class="form-control"  placeholder="Rechercher un message" >
                 <span class="input-group-addon">
                   <button type="submit">
                       <span class="glyphicon glyphicon-search"></span>
@@ -129,15 +137,22 @@ $_smarty_tpl->_assignInScope('data', $_prefixVariable1);
 
         <div class="row">
             <ul class="pagination pull-right">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li class="disabled"><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
+              <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['nb_cases_pagination']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['nb_cases_pagination']->value)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+                <li><a href="index.php?selected_page=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+</a></li>
+              <?php }
+}
+?>
+
+
+              <!--<li class="disabled"><a href="#">4</a></li>-->
             </ul>
         </div>
-
-
 
     </div>
 </section>
