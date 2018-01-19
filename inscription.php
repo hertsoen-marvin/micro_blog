@@ -2,24 +2,24 @@
 include ("includes/connexion.inc.php");
 include ("includes/verif_connexion_user.inc.php");
 include ("models/model_bdd.php");
-require_once("smarty-3.1.31/libs/smarty.class.php"); // On inclut la classe Smarty
+require_once("smarty-3.1.31/libs/Smarty.class.php"); // On inclut la classe Smarty
 
 
   /********************** Gestion des erreurs de formulaire ****************************************/
 $style_err_email=$style_err_pass1=$style_err_pass2  = '';
-if (isset($_POST['input_email']))    {$value_mail="value ='".$_POST['input_email']."'";}      else{$value_mail='';};
+if (isset($_POST['input_email']))    {$value_mail="value ='".$_POST['input_email']."'";}      else{$value_mail="";};
 if (isset($_POST['input_password1'])){$value_pass1="value ='".$_POST['input_password1']."'";} else{$value_pass1="";};
 if (isset($_POST['input_password2'])){$value_pass2="value ='".$_POST['input_password2']."'";} else{$value_pass2="";};
 
 
 
-if(!$_POST['input_email']){
+if(!isset($_POST['input_email'])){
   $style_err_email = "style='border: 1px solid red'";
 }
-else if(!$_POST['input_password1']){
+else if(!isset($_POST['input_password1'])){
   $style_err_pass1 = "style='border: 1px solid red'";
 }
-else if(!$_POST['input_password2'] || $_POST['input_password2'] != $_POST['input_password1'] ){
+else if(!isset($_POST['input_password2']) || $_POST['input_password2'] != $_POST['input_password1']){
   $style_err_pass2 = "style='border: 1px solid red'";
 }
 

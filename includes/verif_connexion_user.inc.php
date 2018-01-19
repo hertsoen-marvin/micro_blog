@@ -32,6 +32,4 @@ if (isset($_COOKIE['id_session']) && $_COOKIE['id_session']){    //false : chain
 }
 else{
 
-  echo ('on entre pas du tout');
-
 }

@@ -9,7 +9,7 @@
                             <br>Beverly Hills, CA 90210</p>
                     </div>
                     <div class="footer-col col-md-4">
-                        
+
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>
@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+                        Copyright &copy; Marvin HERTSOEN 2017
                     </div>
                 </div>
             </div>

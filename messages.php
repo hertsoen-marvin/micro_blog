@@ -9,15 +9,21 @@ if ($connecte_util){
 
 		$a = $_GET['a'];
 
+/***************************** 			Création d'un message		*****************************/
+		if ($a == 'crea'){
 
-/***************************** 			Suppression d'un article		*****************************/
+			model_create_message($_GET['message']);
+			header("Location:index.php");
+			exit();
+		}
+/***************************** 			Suppression d'un message		*****************************/
 		if ($a == 'sup'){
 
 			model_delete_message((int)$_GET['id']);
 			header("Location:index.php");
 			exit();
 		}
-/***************************** 			Modification d'un article		*****************************/
+/***************************** 			Modification d'un message		*****************************/
 
 		else if($a == 'mod'){
 			model_update_message((int)$_GET['id'], $_GET['message']);

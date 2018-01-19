@@ -2,10 +2,13 @@
 	/**************** Ajout des includes php *******************/
 include ("includes/connexion.inc.php");
 include ("includes/verif_connexion_user.inc.php");
-require_once("smarty-3.1.31/libs/smarty.class.php"); // On inclut la classe Smarty
+include ("models/model_bdd.php");
+
+require_once("smarty-3.1.31/libs/Smarty.class.php"); // On inclut la classe Smarty
 
 $smarty = new Smarty;
 
+	/* Récupération des valeurs envoyées par formulaire */
 if (isset($_GET['a']) && !empty($_GET['a'])){
 	$smarty->assign('a', $_GET['a']);
 }
@@ -17,13 +20,33 @@ if (isset($_GET['contenu'])){
 }
 
 
-$sql="SELECT * FROM messages ORDER BY date DESC";
-$stmt=$pdo->query($sql);
-if (sizeof($stmt) >= 1){
-	$smarty->assign('stmt',$stmt);
+
+
+
+if (isset($_GET['search_bar']) && !empty($_GET['search_bar'])){
+
+	$messages = model_search_messages($_GET['search_bar']);
+
+	if (sizeof($messages) >= 1){
+		$smarty->assign('messages',$messages);
+	}
+}
+else{
+
+		/* récupération des messages depuis la base */
+	$messages = model_get_all_messages();
+	if (sizeof($messages) >= 1){
+		$smarty->assign('messages',$messages);
+	}
+
 }
 
-echo "etat de la variable connecte : " . $connecte_util;
+
+
+
+
+
+	/* Envoi vers l'HTML de la variable témoin de connexion utilisateur */
 $smarty->assign('connecte_util',$connecte_util);
 
 

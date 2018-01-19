@@ -18,7 +18,7 @@
 
             {if isset($a)}
               {if $a == 'mod' and $id }
-                <form method="GET" action="article.php">
+                <form method="GET" action="messages.php">
 
                     <div class="col-sm-10">
 
@@ -32,14 +32,14 @@
                     </div>
                     <div class="col-sm-2">
                       <button type="submit" class="btn btn-success btn-lg">Envoyer</button><br/><br/>
-                      <a href='index.php'><button class="btn btn-success btn-lg">Annuler</button></a>
+                      <!--<a href='index.php'><button class="btn btn-success btn-lg">Annuler</button></a>-->
                     </div>
                   </form>
 
 
               {/if}
             {else}
-              <form method="POST" action="message.php">
+              <form method="GET" action="messages.php">
 
                     <div class="col-sm-10">
                       <div class="form-group">
@@ -50,6 +50,7 @@
                     </div>
                     <div class="col-sm-2">
                         {if $connecte_util}
+                        <input type="hidden"  name="a"  value="crea">
                         <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
                         {/if}
                     </div>
@@ -58,15 +59,30 @@
       </div>
       <br /> <br />
 
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-8">
+          <form method="GET" action="index.php">
+            <div id='search_bar' class="input-group stylish-input-group">
+                <input type="text" name='search_bar' class="form-control"  placeholder="Chercher un message" >
+                <span class="input-group-addon">
+                  <button type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
 
       <div class="row">
           <div class="col-md-12">
 
-            {while ($data = $stmt->fetch())}
+            {while ($data = $messages->fetch())}
               <blockquote class='blockquote cus_blockquote'><p> {$data['contenu']|escape:"html"} </p><footer> {$data['date']|date_format:"%A, %B %e, %Y"} </footer></blockquote>
 
               {if $connecte_util}
-                <a href='article.php?a=sup&id="{$data["id"]}"' class='bouton btn btn-danger'> Supprimer</a>
+                <a href='messages.php?a=sup&id={$data["id"]}' class='bouton btn btn-danger'> Supprimer</a>
                 <a href='index.php?a=mod&id={$data["id"]}&contenu={$data["contenu"]|escape:"html"}' class="bouton btn btn-warning"> Modifier</a>
               {/if}
               <br /> <br />
@@ -74,5 +90,19 @@
 
             </div>
         </div>
+
+
+        <div class="row">
+            <ul class="pagination pull-right">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li class="disabled"><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+            </ul>
+        </div>
+
+
+
     </div>
 </section>

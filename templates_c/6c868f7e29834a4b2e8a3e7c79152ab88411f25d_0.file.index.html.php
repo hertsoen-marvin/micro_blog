@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-01-16 19:52:10
+/* Smarty version 3.1.31, created on 2018-01-19 19:51:01
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5a5e57ea494081_45362402',
+  'unifunc' => 'content_5a624c2531c435_74562655',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1516132219,
+      1 => 1516391120,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a5e57ea494081_45362402 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a624c2531c435_74562655 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
@@ -43,7 +43,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
 
             <?php if (isset($_smarty_tpl->tpl_vars['a']->value)) {?>
               <?php if ($_smarty_tpl->tpl_vars['a']->value == 'mod' && $_smarty_tpl->tpl_vars['id']->value) {?>
-                <form method="GET" action="article.php">
+                <form method="GET" action="messages.php">
 
                     <div class="col-sm-10">
 
@@ -59,14 +59,14 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
                     </div>
                     <div class="col-sm-2">
                       <button type="submit" class="btn btn-success btn-lg">Envoyer</button><br/><br/>
-                      <a href='index.php'><button class="btn btn-success btn-lg">Annuler</button></a>
+                      <!--<a href='index.php'><button class="btn btn-success btn-lg">Annuler</button></a>-->
                     </div>
                   </form>
 
 
               <?php }?>
             <?php } else { ?>
-              <form method="POST" action="message.php">
+              <form method="GET" action="messages.php">
 
                     <div class="col-sm-10">
                       <div class="form-group">
@@ -77,6 +77,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
                     </div>
                     <div class="col-sm-2">
                         <?php if ($_smarty_tpl->tpl_vars['connecte_util']->value) {?>
+                        <input type="hidden"  name="a"  value="crea">
                         <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
                         <?php }?>
                     </div>
@@ -85,11 +86,26 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
       </div>
       <br /> <br />
 
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-8">
+          <form method="GET" action="index.php">
+            <div id='search_bar' class="input-group stylish-input-group">
+                <input type="text" name='search_bar' class="form-control"  placeholder="Chercher un message" >
+                <span class="input-group-addon">
+                  <button type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
 
       <div class="row">
           <div class="col-md-12">
 
-            <?php while ($_prefixVariable1 = $_smarty_tpl->tpl_vars['stmt']->value->fetch()) {
+            <?php while ($_prefixVariable1 = $_smarty_tpl->tpl_vars['messages']->value->fetch()) {
 $_smarty_tpl->_assignInScope('data', $_prefixVariable1);
 ?>
               <blockquote class='blockquote cus_blockquote'><p> <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['data']->value['contenu'], ENT_QUOTES, 'UTF-8', true);?>
@@ -97,8 +113,8 @@ $_smarty_tpl->_assignInScope('data', $_prefixVariable1);
  </footer></blockquote>
 
               <?php if ($_smarty_tpl->tpl_vars['connecte_util']->value) {?>
-                <a href='article.php?a=sup&id="<?php echo $_smarty_tpl->tpl_vars['data']->value["id"];?>
-"' class='bouton btn btn-danger'> Supprimer</a>
+                <a href='messages.php?a=sup&id=<?php echo $_smarty_tpl->tpl_vars['data']->value["id"];?>
+' class='bouton btn btn-danger'> Supprimer</a>
                 <a href='index.php?a=mod&id=<?php echo $_smarty_tpl->tpl_vars['data']->value["id"];?>
 &contenu=<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['data']->value["contenu"], ENT_QUOTES, 'UTF-8', true);?>
 ' class="bouton btn btn-warning"> Modifier</a>
@@ -109,6 +125,20 @@ $_smarty_tpl->_assignInScope('data', $_prefixVariable1);
 
             </div>
         </div>
+
+
+        <div class="row">
+            <ul class="pagination pull-right">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li class="disabled"><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+            </ul>
+        </div>
+
+
+
     </div>
 </section>
 <?php }
