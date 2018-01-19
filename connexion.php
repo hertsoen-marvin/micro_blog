@@ -97,17 +97,30 @@
 			<form class="col-md-4 col-md-offset-4" action="connexion.php" method="POST">	<!-- on centre le bloc formulaire -->
 				<!--<div class="col-sm-3">  -->
 
-					<div class="form-group">
-						<label> Adresse e-mail : </label>
-						<input type="email" class="form-control" name="input_email" aria-describedby="emailHelp" placeholder="nom@exemple.com">
-					</div>
-					<div class="form-group">
-						<label> Mot de passe : </label>
-						<input type="password" class="form-control" name="input_password" placeholder="Entrez le mot de passe">
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Entrer</button>
-				  </div>
+
+
+				<div class="login-panel panel panel-default">
+						<div class="panel-heading"> Veuillez vous authentifier :
+						</div>
+
+						<div class="panel-body">
+							<div class="form-group">
+							<label> Adresse e-mail : </label>
+							<input type="email" class="form-control" name="input_email" aria-describedby="emailHelp" placeholder="nom@exemple.com">
+						</div>
+						<div class="form-group">
+							<label> Mot de passe : </label>
+							<input type="password" class="form-control" name="input_password" placeholder="Entrez le mot de passe">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-lg btn-primary btn-block">Entrer</button>
+						</div>
+						</div>
+
+			</div>
+
+
+
 			</form>
 		</div>
 	</div>

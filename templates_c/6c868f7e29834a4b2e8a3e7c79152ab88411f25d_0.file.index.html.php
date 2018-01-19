@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-12-21 16:42:53
+/* Smarty version 3.1.31, created on 2018-01-16 19:52:10
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5a3be48d3831e7_56897018',
+  'unifunc' => 'content_5a5e57ea494081_45362402',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1513872255,
+      1 => 1516132219,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a3be48d3831e7_56897018 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a5e57ea494081_45362402 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
@@ -71,7 +71,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\mi
                     <div class="col-sm-10">
                       <div class="form-group">
                         <?php if ($_smarty_tpl->tpl_vars['connecte_util']->value) {?>
-                          <textarea id="message" name="message" class="form-control" placeholder="Rédigez votre message"></textarea>
+                          <textarea id="message" name="message" class="form-control" placeholder="Rédigez votre message" rows="3" style='resize:none;'></textarea>
                         <?php }?>
                       </div>
                     </div>
@@ -105,8 +105,6 @@ $_smarty_tpl->_assignInScope('data', $_prefixVariable1);
               <?php }?>
               <br /> <br />
             <?php }?>
-
-
 
 
             </div>
