@@ -1,5 +1,43 @@
 <!DOCTYPE html>
+<script type='text/javascript'>
 
+  $(document).ready(function(){
+
+
+    $('#btn').click(function(e){
+    /*  e.preventDefault(); */       $('form').submit(false);
+
+      var form_valid = false;
+
+        /******************** Dès qu'on appuie sur le bouton, on retire toutes les erreurs *************************/
+      $(".alert").remove();
+      $('.has-error').removeClass('has-error') //div.has-error
+
+        /******************** On recherche dans tous les inputs des champs vides  *************************/
+      $('input[type="text"], input[type="password"], input[type="email"]').each(function(){
+
+        // Gestion des champs vides
+        if (!$(this).val()){
+          form_valid=false;
+          $(this).parent('div').addClass("has-error");
+          $(this).after("<div class='alert alert-danger'><strong>"+ $(this).attr('desc') +" est vide.</strong></div>");
+
+          $('.alert').hide().slideDown('fast');
+        }
+
+      });
+      /******************** On recherche dans tous les inputs des champs vides  *************************/
+
+      if(form_valid){
+        $('form').submit(true);
+      }
+
+
+    });
+
+  });
+
+</script>
 
 <!-- Header -->
     <header>
@@ -20,10 +58,6 @@
     <section>
     <!--  <h1 style='color: red'>Ma vue html smarty </h1> -->
 
-
-
-
-
     	<div class="container ce">
     		<div class="row">
 
@@ -37,18 +71,18 @@
                 <div class="panel-body">
                   <div class="form-group">
                     <label> Adresse e-mail : </label>
-        						<input type="email" class="form-control" {$value_mail} name="input_email" aria-describedby="emailHelp" placeholder="nom@exemple.com" {$style_err_mail}>
+        						<input type="email" class="form-control" {$value_mail} name="input_email" desc="l'Email" aria-describedby="emailHelp" placeholder="nom@exemple.com" {$style_err_mail}>
                   </div>
                   <div class="form-group">
         						<label> Mot de passe : </label>
-        						<input type="password" class="form-control" {$value_pass1} name="input_password1" placeholder='Entrez le mot de passe' {$style_err_pass1}>
+        						<input type="password" class="form-control" {$value_pass1} name="input_password1" desc="Le mot de passe" placeholder='Entrez le mot de passe' {$style_err_pass1}>
         					</div>
                   <div class="form-group">
         						<label> Mot de passe : </label>
-        						<input type="password" class="form-control" {$value_pass2} name="input_password2" placeholder='Confirmez le mote de passe' {$style_err_pass2}>
+        						<input type="password" class="form-control" {$value_pass2} name="input_password2" desc="La confirmation" placeholder='Confirmez le mote de passe' {$style_err_pass2}>
         					</div>
                   <div class="form-group">
-        						<button type="submit" class="btn btn-primary btn- pull-right">S'inscrire</button>
+        						<button type="submit" id='btn' class="btn btn-primary btn- pull-right">S'inscrire</button>
         				  </div>
                 </div>
             </div>

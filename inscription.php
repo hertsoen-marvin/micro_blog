@@ -14,13 +14,13 @@ if (isset($_POST['input_password2'])){$value_pass2="value ='".$_POST['input_pass
 
 
 if(!isset($_POST['input_email'])){
-  $style_err_email = "style='border: 1px solid red'";
+//$style_err_email = "style='border: 1px solid red'";
 }
 else if(!isset($_POST['input_password1'])){
-  $style_err_pass1 = "style='border: 1px solid red'";
+//  $style_err_pass1 = "style='border: 1px solid red'";
 }
 else if(!isset($_POST['input_password2']) || $_POST['input_password2'] != $_POST['input_password1']){
-  $style_err_pass2 = "style='border: 1px solid red'";
+//  $style_err_pass2 = "style='border: 1px solid red'";
 }
 
 /********************** Gestion des erreurs de formulaire ****************************************/
@@ -30,7 +30,7 @@ else{
     $password = md5($_POST['input_password1']);
     if (chk_existing_mail($mail)->rowCount() != 0)
     {
-      $style_err_email = "style='border: 1px solid red'";
+      //$style_err_email = "style='border: 1px solid red'";
 
     }
     else{
