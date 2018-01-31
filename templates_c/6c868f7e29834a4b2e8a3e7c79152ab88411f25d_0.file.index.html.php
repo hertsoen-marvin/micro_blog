@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-01-19 22:49:40
+/* Smarty version 3.1.31, created on 2018-01-19 22:50:51
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5a6276043d6a18_85731519',
+  'unifunc' => 'content_5a62764b5be330_88558596',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1516402179,
+      1 => 1516402191,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a6276043d6a18_85731519 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a62764b5be330_88558596 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
