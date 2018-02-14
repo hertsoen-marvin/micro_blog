@@ -6,7 +6,6 @@ require_once("smarty-3.1.31/libs/Smarty.class.php"); // On inclut la classe Smar
 
 
   /********************** Gestion des erreurs de formulaire ****************************************/
-$style_err_email=$style_err_pass1=$style_err_pass2  = '';
 if (isset($_POST['input_email']))    {$value_mail="value ='".$_POST['input_email']."'";}      else{$value_mail="";};
 if (isset($_POST['input_password1'])){$value_pass1="value ='".$_POST['input_password1']."'";} else{$value_pass1="";};
 if (isset($_POST['input_password2'])){$value_pass2="value ='".$_POST['input_password2']."'";} else{$value_pass2="";};
@@ -46,7 +45,6 @@ else{
 $smarty = new Smarty;
 $smarty->assign(array(
   "intitule" => 'inscription',
-  "style_err_mail" => $style_err_email, "style_err_pass1" => $style_err_pass1, "style_err_pass2" => $style_err_pass2,
   "value_mail" => $value_mail,"value_pass1" => $value_pass1, "value_pass2" => $value_pass2,
 ));
 

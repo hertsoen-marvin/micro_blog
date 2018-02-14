@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-01-31 17:20:46
+/* Smarty version 3.1.31, created on 2018-02-14 14:00:20
   from "D:\wamp\www\micro_blog\inscription.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5a71faeeea2318_12032517',
+  'unifunc' => 'content_5a8440f4686518_11783981',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6312e1b3e33c98c51c04e6d015b7d264af436a6' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\inscription.html',
-      1 => 1517419245,
+      1 => 1518616816,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a71faeeea2318_12032517 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a8440f4686518_11783981 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <?php echo '<script'; ?>
@@ -28,11 +28,15 @@ function content_5a71faeeea2318_12032517 (Smarty_Internal_Template $_smarty_tpl)
 
   $(document).ready(function(){
 
+    $('input').keypress(function(e){
+          $(this).next("div .alert").remove();
+          $(this).parent().removeClass('has-error') //div.has-error
+    })
 
     $('#btn').click(function(e){
-    /*  e.preventDefault(); */       $('form').submit(false);
-
-      var form_valid = false;
+  //    $('form').submit(false);    /*  e.preventDefault(); */
+       event.preventDefault();
+      var form_valid = true;
 
         /******************** Dès qu'on appuie sur le bouton, on retire toutes les erreurs *************************/
       $(".alert").remove();
@@ -46,18 +50,22 @@ function content_5a71faeeea2318_12032517 (Smarty_Internal_Template $_smarty_tpl)
           form_valid=false;
           $(this).parent('div').addClass("has-error");
           $(this).after("<div class='alert alert-danger'><strong>"+ $(this).attr('desc') +" est vide.</strong></div>");
-
           $('.alert').hide().slideDown('fast');
         }
-
       });
-      /******************** On recherche dans tous les inputs des champs vides  *************************/
 
-      if(form_valid){
-        $('form').submit(true);
+      /******************** On recherche dans tous les inputs des champs vides  *************************/
+      if($('#input_password1').val() != $('#input_password2').val() && form_valid == true){ // Si les 2 champs mdp sont différents et que les champs sont tous remplis
+        $('#input_password2').after("<div class='alert alert-danger'><strong> Les mots de passes ne correspondent pas.</strong></div>");
+        form_valid=false;
       }
 
 
+      if(form_valid){
+        $('form').submit();
+        return true;
+        console.log('enter');
+      }
     });
 
   });
@@ -99,23 +107,20 @@ function content_5a71faeeea2318_12032517 (Smarty_Internal_Template $_smarty_tpl)
                   <div class="form-group">
                     <label> Adresse e-mail : </label>
         						<input type="email" class="form-control" <?php echo $_smarty_tpl->tpl_vars['value_mail']->value;?>
- name="input_email" desc="l'Email" aria-describedby="emailHelp" placeholder="nom@exemple.com" <?php echo $_smarty_tpl->tpl_vars['style_err_mail']->value;?>
->
+ id="input_email" name="input_email" desc="l'Email" aria-describedby="emailHelp" placeholder="nom@exemple.com">
                   </div>
                   <div class="form-group">
         						<label> Mot de passe : </label>
         						<input type="password" class="form-control" <?php echo $_smarty_tpl->tpl_vars['value_pass1']->value;?>
- name="input_password1" desc="Le mot de passe" placeholder='Entrez le mot de passe' <?php echo $_smarty_tpl->tpl_vars['style_err_pass1']->value;?>
->
+ id="input_password1" name="input_password1" desc="Le mot de passe" placeholder='Entrez le mot de passe' >
         					</div>
                   <div class="form-group">
         						<label> Mot de passe : </label>
         						<input type="password" class="form-control" <?php echo $_smarty_tpl->tpl_vars['value_pass2']->value;?>
- name="input_password2" desc="La confirmation" placeholder='Confirmez le mote de passe' <?php echo $_smarty_tpl->tpl_vars['style_err_pass2']->value;?>
->
+ id="input_password2" name="input_password2" desc="La confirmation" placeholder='Confirmez le mote de passe' >
         					</div>
                   <div class="form-group">
-        						<button type="submit" id='btn' class="btn btn-primary btn- pull-right">S'inscrire</button>
+        						<button type="submit" id='btn' class="btn btn-primary pull-right">S'inscrire</button>
         				  </div>
                 </div>
             </div>

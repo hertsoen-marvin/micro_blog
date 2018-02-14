@@ -3,11 +3,15 @@
 
   $(document).ready(function(){
 
+    $('input').keypress(function(e){
+          $(this).next("div .alert").remove();
+          $(this).parent().removeClass('has-error') //div.has-error
+    })
 
     $('#btn').click(function(e){
-    /*  e.preventDefault(); */       $('form').submit(false);
-
-      var form_valid = false;
+  //    $('form').submit(false);    /*  e.preventDefault(); */
+       event.preventDefault();
+      var form_valid = true;
 
         /******************** Dès qu'on appuie sur le bouton, on retire toutes les erreurs *************************/
       $(".alert").remove();
@@ -21,18 +25,22 @@
           form_valid=false;
           $(this).parent('div').addClass("has-error");
           $(this).after("<div class='alert alert-danger'><strong>"+ $(this).attr('desc') +" est vide.</strong></div>");
-
           $('.alert').hide().slideDown('fast');
         }
-
       });
-      /******************** On recherche dans tous les inputs des champs vides  *************************/
 
-      if(form_valid){
-        $('form').submit(true);
+      /******************** On recherche dans tous les inputs des champs vides  *************************/
+      if($('#input_password1').val() != $('#input_password2').val() && form_valid == true){ // Si les 2 champs mdp sont différents et que les champs sont tous remplis
+        $('#input_password2').after("<div class='alert alert-danger'><strong> Les mots de passes ne correspondent pas.</strong></div>");
+        form_valid=false;
       }
 
 
+      if(form_valid){
+        $('form').submit();
+        return true;
+        console.log('enter');
+      }
     });
 
   });
@@ -71,18 +79,18 @@
                 <div class="panel-body">
                   <div class="form-group">
                     <label> Adresse e-mail : </label>
-        						<input type="email" class="form-control" {$value_mail} name="input_email" desc="l'Email" aria-describedby="emailHelp" placeholder="nom@exemple.com" {$style_err_mail}>
+        						<input type="email" class="form-control" {$value_mail} id="input_email" name="input_email" desc="l'Email" aria-describedby="emailHelp" placeholder="nom@exemple.com">
                   </div>
                   <div class="form-group">
         						<label> Mot de passe : </label>
-        						<input type="password" class="form-control" {$value_pass1} name="input_password1" desc="Le mot de passe" placeholder='Entrez le mot de passe' {$style_err_pass1}>
+        						<input type="password" class="form-control" {$value_pass1} id="input_password1" name="input_password1" desc="Le mot de passe" placeholder='Entrez le mot de passe' >
         					</div>
                   <div class="form-group">
         						<label> Mot de passe : </label>
-        						<input type="password" class="form-control" {$value_pass2} name="input_password2" desc="La confirmation" placeholder='Confirmez le mote de passe' {$style_err_pass2}>
+        						<input type="password" class="form-control" {$value_pass2} id="input_password2" name="input_password2" desc="La confirmation" placeholder='Confirmez le mote de passe' >
         					</div>
                   <div class="form-group">
-        						<button type="submit" id='btn' class="btn btn-primary btn- pull-right">S'inscrire</button>
+        						<button type="submit" id='btn' class="btn btn-primary pull-right">S'inscrire</button>
         				  </div>
                 </div>
             </div>
