@@ -118,9 +118,12 @@ function model_get_paging_messages($index){
   include ("includes/connexion.inc.php");
 
     $debut = $index;
-    $fin = $debut + 5;
+    $fin = 5;
+
+    //echo "debut : " . $debut . "fin : " .$fin;
 
     $sql="select id, SUBSTRING(contenu, 1, 100) as contenu, date from messages ORDER BY date DESC limit " .$debut.", ". $fin; //
+    var_dump($sql);
     $retour = $pdo->query($sql);
     return $retour->fetchAll(PDO::FETCH_ASSOC);
 }

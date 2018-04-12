@@ -48,6 +48,7 @@ if (isset($_GET['search_bar']) && !empty($_GET['search_bar'])){
 else if (isset($_GET['selected_page']) && !empty($_GET['selected_page'])){
 	$index = ($_GET['selected_page']-1)*5;
 	$messages = model_get_paging_messages($index);
+	//var_dump($messages); 
 	if (sizeof($messages) >= 1){
 		$messages_with_links = checkForRegEx($messages);
 		$smarty->assign('messages',$messages_with_links);

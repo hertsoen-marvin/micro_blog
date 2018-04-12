@@ -18,8 +18,6 @@
 	if(isset($_POST['input_email']) && isset($_POST['input_password'])){
 
 
-
-
 			/* définition des variables */
 		$email 		 = $_POST["input_email"];
 		$password	 = $_POST["input_password"];
