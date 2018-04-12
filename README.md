@@ -1,12 +1,13 @@
 Les différentes fonctionnalitées ajoutées : 
 
--> 2e branche GIT
+• 2e branche GIT
 
 ************* Développemennt **************
--> Traitement des messages affichés à l’aide d’expressions régulières pour rendre
+
+• Traitement des messages affichés à l’aide d’expressions régulières pour rendre
 cliquables les URL et e-mails
 
--> Requête via AJAX et affichage de la version complète des messages au clic sur un
+• Requête via AJAX et affichage de la version complète des messages au clic sur un
 bouton (en maintenant les expressions régulières dans le message)
 
 
