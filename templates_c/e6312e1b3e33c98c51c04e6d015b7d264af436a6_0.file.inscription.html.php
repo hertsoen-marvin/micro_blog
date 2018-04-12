@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-04-12 18:30:45
+/* Smarty version 3.1.31, created on 2018-04-12 19:42:44
   from "D:\wamp\www\micro_blog\inscription.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5acfa5d51d7486_76539830',
+  'unifunc' => 'content_5acfb6b4d51851_83383162',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6312e1b3e33c98c51c04e6d015b7d264af436a6' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\inscription.html',
-      1 => 1523557832,
+      1 => 1523562161,
       2 => 'file',
     ),
   ),
@@ -20,58 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5acfa5d51d7486_76539830 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5acfb6b4d51851_83383162 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
-<?php echo '<script'; ?>
- type='text/javascript'>
-
-  $(document).ready(function(){
-
-    $('input').keypress(function(e){
-          $(this).next("div .alert").remove();
-          $(this).parent().removeClass('has-error') //div.has-error
-    })
-
-    $('#btn').click(function(e){
-  //    $('form').submit(false);    /*  e.preventDefault(); */
-       event.preventDefault();
-      var form_valid = true;
-
-        /******************** Dès qu'on appuie sur le bouton, on retire toutes les erreurs *************************/
-      $(".alert").remove();
-      $('.has-error').removeClass('has-error') //div.has-error
-
-        /******************** On recherche dans tous les inputs des champs vides  *************************/
-      $('input[type="text"], input[type="password"], input[type="email"]').each(function(){
-
-        // Gestion des champs vides
-        if (!$(this).val()){
-          form_valid=false;
-          $(this).parent('div').addClass("has-error");
-          $(this).after("<div class='alert alert-danger'><strong>"+ $(this).attr('desc') +" est vide.</strong></div>");
-          $('.alert').hide().slideDown('fast');
-        }
-      });
-
-      /******************** On recherche dans tous les inputs des champs vides  *************************/
-      if($('#input_password1').val() != $('#input_password2').val() && form_valid == true){ // Si les 2 champs mdp sont différents et que les champs sont tous remplis
-        $('#input_password2').after("<div class='alert alert-danger'><strong> Les mots de passes ne correspondent pas.</strong></div>");
-        form_valid=false;
-      }
-
-
-      if(form_valid){
-        $('form').submit();
-        return true;
-        console.log('enter');
-      }
-    });
-
-  });
-
-<?php echo '</script'; ?>
->
 
 <!-- Header -->
     <header>
@@ -129,5 +80,8 @@ function content_5acfa5d51d7486_76539830 (Smarty_Internal_Template $_smarty_tpl)
     		</div>
     	</div>
     </section>
+    <?php echo '<script'; ?>
+ src="inscription.js" type="text/javascript"><?php echo '</script'; ?>
+>
 <?php }
 }

@@ -1,0 +1,4 @@
+$(document).ready(function(){$('input').keypress(function(e){$(this).next("div .alert").remove();$(this).parent().removeClass('has-error')})
+$('#btn').click(function(e){event.preventDefault();var form_valid=!0;$(".alert").remove();$('.has-error').removeClass('has-error')
+$('input[type="text"], input[type="password"], input[type="email"]').each(function(){if(!$(this).val()){form_valid=!1;$(this).parent('div').addClass("has-error");$(this).after("<div class='alert alert-danger'><strong>"+$(this).attr('desc')+" est vide.</strong></div>");$('.alert').hide().slideDown('fast')}});if($('#input_password1').val()!=$('#input_password2').val()&&form_valid==!0){$('#input_password2').after("<div class='alert alert-danger'><strong> Les mots de passes ne correspondent pas.</strong></div>");form_valid=!1}
+if(form_valid){$('form').submit();return!0;console.log('enter')}})})
