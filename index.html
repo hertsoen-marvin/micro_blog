@@ -130,6 +130,7 @@
       e.preventDefault();
       var idBD = $(this).attr('idBD');
       $.get("messages.php?ajaxRequest=getAllMessage&id_message="+idBD).done(function(data){
+        console.log(data);
           data_parsed = JSON.parse(data);
           if(data_parsed.contenu){
             $('.container blockquote .ancreAfficherTout[idBD='+idBD+']').closest("blockquote").find('p').html(data_parsed.contenu);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-03-28 17:55:35
+/* Smarty version 3.1.31, created on 2018-04-12 18:54:41
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5abbd717203e61_49043258',
+  'unifunc' => 'content_5acfab716c88d6_57723955',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1522259680,
+      1 => 1523559279,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5abbd717203e61_49043258 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5acfab716c88d6_57723955 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
@@ -186,6 +186,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
       e.preventDefault();
       var idBD = $(this).attr('idBD');
       $.get("messages.php?ajaxRequest=getAllMessage&id_message="+idBD).done(function(data){
+        console.log(data);
           data_parsed = JSON.parse(data);
           if(data_parsed.contenu){
             $('.container blockquote .ancreAfficherTout[idBD='+idBD+']').closest("blockquote").find('p').html(data_parsed.contenu);

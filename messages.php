@@ -3,21 +3,22 @@
 	include ("includes/verif_connexion_user.inc.php");
 	include ("models/model_bdd.php");
 
+
+if (isset($_GET['a']))						{$a = $_GET['a'];}
+if (isset($_GET['ajaxRequest'])) 	{$ajaxRequest = $_GET['ajaxRequest'];}
+
+	/* pas besoin d'être connecté pour afficher un message en entier */
+if (isset($ajaxRequest) && !empty($ajaxRequest)){
+		//Importation d'un message en entier
+	if ($ajaxRequest == 'getAllMessage'){
+		if (isset($_GET['id_message']) && !empty($_GET['id_message'])){
+			echo(json_encode(model_get_message($_GET['id_message'])));
+		}
+	}
+}
+
 if ($connecte_util){
 	try{
-		if (isset($_GET['a']))						{$a = $_GET['a'];}
-		if (isset($_GET['ajaxRequest'])) 	{$ajaxRequest = $_GET['ajaxRequest'];}
-
-
-		if (isset($ajaxRequest) && !empty($ajaxRequest)){
-				//Importation d'un message en entier
-			if ($ajaxRequest == 'getAllMessage'){
-				if (isset($_GET['id_message']) && !empty($_GET['id_message'])){
-					echo(json_encode(model_get_message($_GET['id_message'])));
-				//	var_dump (model_get_message($_GET['id_message']));
-				}
-			}
-		}
 
 		if (isset($a) && !empty($a)){
 	/***************************** 			Création d'un message		*****************************/
@@ -53,7 +54,8 @@ if ($connecte_util){
 	}
 }
 else{
-	echo 'pas connecté';
+//	echo(json_encode(array('erreur' => "pas connecté")));
+
 
 }
 
