@@ -9,7 +9,8 @@
                             <br>Beverly Hills, CA 90210</p>
                     </div>
                     <div class="footer-col col-md-4">
-
+                      <a href='#' class='sprite facebook'></a>
+                      <a href='#' class='sprite twitter'></a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>

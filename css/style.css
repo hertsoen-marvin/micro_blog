@@ -61,7 +61,7 @@ blockquote .bouton:first-child{
 .sprite{
   width:48px;
   height:48px;
-  display:block;
+  display:inline-block;
   background-image: url('../img/icones.png');
 }
 
@@ -72,10 +72,10 @@ blockquote .bouton:first-child{
   background-position: -48px -48px;
 }
 .twitter{
-  background-position: -48px 0;
+  background-position: -144px 0;
 }
 .twitter:hover{
-  background-position: -48px 0;
+  background-position: -144px -48px;
 }
 
 

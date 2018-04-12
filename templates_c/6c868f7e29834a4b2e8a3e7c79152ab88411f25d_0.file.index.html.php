@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-04-12 18:54:41
+/* Smarty version 3.1.31, created on 2018-04-12 19:05:50
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5acfab716c88d6_57723955',
+  'unifunc' => 'content_5acfae0ed80b15_27914714',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1523559279,
+      1 => 1523559937,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5acfab716c88d6_57723955 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5acfae0ed80b15_27914714 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
@@ -153,9 +153,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 
             </div>
         </div>
-
-        <a href='#' class='sprite facebook'></a>
-
 
         <div class="row">
             <ul class="pagination pull-right">
