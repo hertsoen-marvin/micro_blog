@@ -93,6 +93,8 @@
                   {if $connecte_util}
                   <a href='messages.php?a=sup&id={$row["id"]}' class=' bouton btn btn-danger btn-sm'> Supprimer</a>
                   <a href='index.php?a=mod&id={$row["id"]}&contenu={$row["raw_contenu"]}' idBD='{$row["id"]}' class="btn_modif bouton btn btn-warning btn-sm"> Modifier</a>
+                  <a href='#'  class="vote btn_modif bouton btn btn-success btn-sm pull-right"><i class='fa fa-thumbs-up'></i> <span class='nb_vote'>0</span></a>
+
                   {/if}
                 </footer>
               </blockquote>

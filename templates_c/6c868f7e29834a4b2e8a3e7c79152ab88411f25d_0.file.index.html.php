@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-04-12 19:44:29
+/* Smarty version 3.1.31, created on 2018-04-12 20:42:48
   from "D:\wamp\www\micro_blog\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5acfb71dd85e63_76072445',
+  'unifunc' => 'content_5acfc4c885d947_72546760',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c868f7e29834a4b2e8a3e7c79152ab88411f25d' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\index.html',
-      1 => 1523562249,
+      1 => 1523565758,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5acfb71dd85e63_76072445 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5acfc4c885d947_72546760 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'D:\\wamp\\www\\micro_blog\\smarty-3.1.31\\libs\\plugins\\modifier.date_format.php';
 ?>
 <header>
@@ -131,6 +131,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 &contenu=<?php echo $_smarty_tpl->tpl_vars['row']->value["raw_contenu"];?>
 ' idBD='<?php echo $_smarty_tpl->tpl_vars['row']->value["id"];?>
 ' class="btn_modif bouton btn btn-warning btn-sm"> Modifier</a>
+                  <a href='#'  class="vote btn_modif bouton btn btn-success btn-sm pull-right"><i class='fa fa-thumbs-up'></i> <span class='nb_vote'>0</span></a>
+
                   <?php }?>
                 </footer>
               </blockquote>
