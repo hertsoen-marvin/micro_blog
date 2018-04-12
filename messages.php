@@ -2,6 +2,7 @@
 	include ("includes/connexion.inc.php");
 	include ("includes/verif_connexion_user.inc.php");
 	include ("models/model_bdd.php");
+	include ("helpers/regEx.php");
 
 
 if (isset($_GET['a']))						{$a = $_GET['a'];}
@@ -12,7 +13,8 @@ if (isset($ajaxRequest) && !empty($ajaxRequest)){
 		//Importation d'un message en entier
 	if ($ajaxRequest == 'getAllMessage'){
 		if (isset($_GET['id_message']) && !empty($_GET['id_message'])){
-			echo(json_encode(model_get_message($_GET['id_message'])));
+			// var_dump(checkForRegExSingleMessage(model_get_message($_GET['id_message'])));
+			echo(json_encode(checkForRegExSingleMessage(model_get_message($_GET['id_message']))));
 		}
 	}
 }
