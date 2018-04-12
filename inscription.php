@@ -5,6 +5,22 @@ include ("models/model_bdd.php");
 require_once("smarty-3.1.31/libs/Smarty.class.php"); // On inclut la classe Smarty
 
 
+/*
+Expression régulière mail
+https://domaine.fr/test/index.php
+https?\:+\/{2}([\w\d]+\.[\w]+)[\/\w\d]+\/+([\w\.\d]+)
+^https?\:+\/{2}([\w\d]+\.[\w]+)[\/\w\d]+\/+([\w]+\.[\w]+)?$
+^https?\:+\/{2}(?:www\.)?([\w\d]+\.[\w]+)[\/\w\d]+\/+([\w]+\.[\w]+\??(?:[\w\d]+=[\w\d]+\&?)*)
+
+Expression téléphone
+07 63 19 65 28
+([\d]{2})\.?\/?[\/]?
+
+Expression mail
+hertsoen.m59@hotmail.fr
+[\w\d\.]+@([\w\d]+.[\w]+)
+*/
+
   /********************** Gestion des erreurs de formulaire ****************************************/
 if (isset($_POST['input_email']))    {$value_mail="value ='".$_POST['input_email']."'";}      else{$value_mail="";};
 if (isset($_POST['input_password1'])){$value_pass1="value ='".$_POST['input_password1']."'";} else{$value_pass1="";};
@@ -12,8 +28,8 @@ if (isset($_POST['input_password2'])){$value_pass2="value ='".$_POST['input_pass
 
 
 
-if(!isset($_POST['input_email'])){
-//$style_err_email = "style='border: 1px solid red'";
+if(!$value_mail){
+
 }
 else if(!isset($_POST['input_password1'])){
 //  $style_err_pass1 = "style='border: 1px solid red'";

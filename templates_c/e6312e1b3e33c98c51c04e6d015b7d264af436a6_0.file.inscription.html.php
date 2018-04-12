@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2018-02-14 14:00:20
+/* Smarty version 3.1.31, created on 2018-03-28 17:52:45
   from "D:\wamp\www\micro_blog\inscription.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5a8440f4686518_11783981',
+  'unifunc' => 'content_5abbd66d718281_59944611',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6312e1b3e33c98c51c04e6d015b7d264af436a6' => 
     array (
       0 => 'D:\\wamp\\www\\micro_blog\\inscription.html',
-      1 => 1518616816,
+      1 => 1522155464,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a8440f4686518_11783981 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5abbd66d718281_59944611 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <?php echo '<script'; ?>
@@ -106,7 +106,7 @@ function content_5a8440f4686518_11783981 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="panel-body">
                   <div class="form-group">
                     <label> Adresse e-mail : </label>
-        						<input type="email" class="form-control" <?php echo $_smarty_tpl->tpl_vars['value_mail']->value;?>
+        						<input type="email" class="form-control" value=<?php echo $_smarty_tpl->tpl_vars['value_mail']->value;?>
  id="input_email" name="input_email" desc="l'Email" aria-describedby="emailHelp" placeholder="nom@exemple.com">
                   </div>
                   <div class="form-group">

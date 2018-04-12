@@ -3,6 +3,8 @@
 include ("includes/connexion.inc.php");
 include ("includes/verif_connexion_user.inc.php");
 include ("models/model_bdd.php");
+include ("helpers/regEx.php");
+
 
 require_once("smarty-3.1.31/libs/Smarty.class.php"); // On inclut la classe Smarty
 
@@ -37,28 +39,33 @@ if (isset($_GET['search_bar']) && !empty($_GET['search_bar'])){
 	$messages = model_search_messages($_GET['search_bar']);
 
 	if (sizeof($messages) >= 1){
-		$smarty->assign('messages',$messages);
+		$messages_with_links = checkForRegEx($messages);
+		$smarty->assign('messages',$messages_with_links);
 	}
 }
+
+
 else if (isset($_GET['selected_page']) && !empty($_GET['selected_page'])){
 	$index = ($_GET['selected_page']-1)*5;
 	$messages = model_get_paging_messages($index);
 	if (sizeof($messages) >= 1){
-		$smarty->assign('messages',$messages);
+		$messages_with_links = checkForRegEx($messages);
+		$smarty->assign('messages',$messages_with_links);
 	}
 }
+
+
 else{
 
 		/* récupération des messages depuis la base */
 	$messages = model_get_paging_messages(0);
+	//var_dump($messages);
 	if (sizeof($messages) >= 1){
-		$smarty->assign('messages',$messages);
+
+		$messages_with_links = checkForRegEx($messages);
+		$smarty->assign('messages',$messages_with_links);
 	}
-
 }
-
-
-
 
 
 

@@ -34,6 +34,7 @@
 
         <!-- Theme JavaScript -->
         <script src="js/freelancer.min.js"></script>
+        <script src="js/jquery.matchHeight.js" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,7 +64,6 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
                         <?php
                           if ($connecte_util && $email_util){
                             echo '<li class="page-scroll"><a>'.$email_util . '</a></li><li class="page-scroll"><a href="deconnexion.php">Deconnexion</a></li> ';}
@@ -72,7 +72,6 @@
                             echo '  <li class="page-scroll"><a href="connexion.php">Connexion</a></li>';
                           }
                         ?>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -23,7 +23,7 @@
                     <div class="col-sm-10">
 
                       <div class="form-group">
-                        <textarea id="message" name="message" class="form-control" placeholder="Message"> {$contenu} </textarea>
+                        <textarea id="message" name="message" class="form-control" placeholder="" rows="3" style='resize:none;'> {$contenu} </textarea>
                       </div>
 
                         <input type="hidden"  name="a"  value="mod">
@@ -31,7 +31,7 @@
 
                     </div>
                     <div class="col-sm-2">
-                      <button type="submit" class="btn btn-success btn-lg">Envoyer</button><br/><br/>
+                      <button type="submit" class="btn btn-success btn-lg" style='width:100%; height:74px;'>Modifier</button><br/><br/>
                       <!--<a href='index.php'><button class="btn btn-success btn-lg">Annuler</button></a>-->
                     </div>
                   </form>
@@ -47,7 +47,7 @@
 
                 <div class="row">
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-10 box">
                       <div class="form-group">
                         {if $connecte_util}
                           <textarea id="message" name="message" class="form-control" placeholder="Rédigez votre message" rows="3" style='resize:none;'></textarea>
@@ -55,9 +55,9 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 box">
                         {if $connecte_util}
-                        <button type="submit" class="btn btn-success " style='width:100%; '>Envoyer</button>
+                        <button type="submit" class="btn btn-success " style='width:100%; height:74px;'>Envoyer</button>
                         {/if}
                     </div>
                 </div>
@@ -68,36 +68,47 @@
       <br /> <br />
 
       <div class="row">
-        <div class="col-sm-4 col-sm-offset-8">
-          <form method="GET" action="index.php">
-            <div id='search_bar' class="input-group stylish-input-group">
-                <input type="text" name='search_bar' class="form-control"  placeholder="Rechercher un message" >
-                <span class="input-group-addon">
-                  <button type="submit">
-                      <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-            </div>
+          <form id='search_form' method="GET" action="index.php">
+                <span class="glyphicon glyphicon-search"></span>
+                <input type="text" name='search_bar' class='search_bar' class="form-control"  placeholder="Rechercher un message" >
           </form>
-        </div>
       </div>
+
+
 
 
       <div class="row">
           <div class="col-md-12">
 
-            {while ($data = $messages->fetch())}
-              <blockquote class='blockquote cus_blockquote'><p> {$data['contenu']|escape:"html"} </p><footer> {$data['date']|date_format:"%A, %B %e, %Y"} </footer></blockquote>
+            {foreach foreach from=$messages item=row}
+              <blockquote class='blockquote cus_blockquote'>
+                <p> {$row['contenu']}
+                  {if strlen($row['contenu']) > 99 }
+                    <a class='ancreAfficherTout text-white bg-primary' href='#' idBD="{$row['id']}">Afficher tout <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                    </a>
+                  {/if}
+                </p>
+                <footer> {$row['date']|date_format:"%d/%m/%Y à %H:%M"}
+
+                  {if $connecte_util}
+                  <a href='messages.php?a=sup&id={$row["id"]}' class=' bouton btn btn-danger btn-sm'> Supprimer</a>
+                  <a href='index.php?a=mod&id={$row["id"]}&contenu={$row["raw_contenu"]}' idBD='{$row["id"]}' class="btn_modif bouton btn btn-warning btn-sm"> Modifier</a>
+                  {/if}
+                </footer>
+              </blockquote>
+
 
               {if $connecte_util}
-                <a href='messages.php?a=sup&id={$data["id"]}' class='bouton btn btn-danger'> Supprimer</a>
-                <a href='index.php?a=mod&id={$data["id"]}&contenu={$data["contenu"]|escape:"html"}' class="bouton btn btn-warning"> Modifier</a>
+              <!--  <a href='messages.php?a=sup&id={$row["id"]}' class='bouton btn btn-danger'> Supprimer</a>
+                <a href='index.php?a=mod&id={$row["id"]}&contenu={$row["raw_contenu"]}' class="bouton btn btn-warning"> Modifier</a>-->
               {/if}
               <br /> <br />
-            {/while}
+            {/foreach}
 
             </div>
         </div>
+
+        <a href='#' class='sprite facebook'></a>
 
 
         <div class="row">
@@ -112,3 +123,32 @@
 
     </div>
 </section>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $(".ancreAfficherTout").click(function(e){
+      e.preventDefault();
+      var idBD = $(this).attr('idBD');
+      $.get("messages.php?ajaxRequest=getAllMessage&id_message="+idBD).done(function(data){
+          data_parsed = JSON.parse(data);
+          if(data_parsed.contenu){
+            $('.container blockquote .ancreAfficherTout[idBD='+idBD+']').closest("blockquote").find('p').html(data_parsed.contenu);
+            $('.container blockquote .ancreAfficherTout[idBD='+idBD+']').remove();
+          }
+        });
+    });
+
+    $(".btn_modif").click(function(e){
+      e.preventDefault();
+      var idBD = $(this).attr('idBD');
+      $.get("messages.php?ajaxRequest=getAllMessage&id_message="+idBD).done(function(data){
+          data_parsed = JSON.parse(data);
+          if(data_parsed.contenu){
+            window.location = "index.php?a=mod&id="+idBD+"&contenu="+data_parsed.contenu;
+          }
+        });
+    });
+
+
+});
+</script>

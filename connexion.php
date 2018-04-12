@@ -26,17 +26,16 @@
 
 			/* check identifiants  */
 			$chkuser = model_check_ids_connection($email,$password)->rowCount();
-			var_dump('test' . $chkuser);
+			var_dump('checkuser : ' . $chkuser);
 
 		if (model_check_ids_connection($email,$password)->rowCount() != 0){										// Si on trouve une correspondance entrée <--> bdd
-
 
 			if (!isset($_COOKIE['id_session']))		// Si le cookie n'est pas encore créé
 			{
 					/* creation id session */
 				$sid = md5($email . time()); // --> On crée une longue chaine de caractère à partir de l'email par ex. (avec time() en plus pour que la sortie ne soit jamais la même)
 				model_update_sid_session($sid,$email);					/* Création du sid & maj dans la base */
-				setcookie('id_session',$sid,time()+60*15);					/* Creation cookie sur le client web */
+				setcookie('id_session',$sid,time()+60*60);					/* Creation cookie sur le client web */
 			}
 
 					/* Redirection	*/

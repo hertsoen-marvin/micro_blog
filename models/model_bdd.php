@@ -84,8 +84,8 @@ function model_update_message($id, $contenu){
 
   $sql='UPDATE messages SET contenu = :contenu, date = UNIX_TIMESTAMP() WHERE id = :id';
   $prep = $pdo->prepare($sql);
-  $prep->bindValue(':contenu',$_GET['message']);
-  $prep->bindValue(':id',$_GET['id']);
+  $prep->bindValue(':contenu',$contenu);
+  $prep->bindValue(':id',$id);
   $prep->execute();
 
 }
@@ -100,6 +100,18 @@ function model_get_all_messages(){
   return $messages;
 }
 
+/* récupération d'un message en entier */
+function model_get_message($id){
+  include ("includes/connexion.inc.php");
+
+  $sql="SELECT * FROM messages where id = :id";
+  $prep = $pdo->prepare($sql);
+  $prep->bindValue(':id',$id);
+  $prep->execute();
+  return $prep->fetch(PDO::FETCH_ASSOC);
+
+}
+
 /* Chercher un message à partir de la pagination */
 function model_get_paging_messages($index){
 
@@ -108,8 +120,9 @@ function model_get_paging_messages($index){
     $debut = $index;
     $fin = $debut + 5;
 
-    $sql="select * from messages ORDER BY date DESC limit " .$debut.", ". $fin; //
-    return  $pdo->query($sql);
+    $sql="select id, SUBSTRING(contenu, 1, 100) as contenu, date from messages ORDER BY date DESC limit " .$debut.", ". $fin; //
+    $retour = $pdo->query($sql);
+    return $retour->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /* Chercher un message particulier */
@@ -118,7 +131,9 @@ function model_search_messages($recherche){
   include ("includes/connexion.inc.php");
 
   $sql="SELECT * FROM messages WHERE contenu LIKE '%".$recherche."%' ORDER BY date DESC"; //
-  return  $pdo->query($sql);
+  $retour =  $pdo->query($sql);
+  return $retour->fetchAll(PDO::FETCH_ASSOC);
+
 }
 
 
